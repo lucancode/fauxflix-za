@@ -1,0 +1,32 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --main-color: #101720;
+  --netflix-red: #e50914;
+}
+
+@layer base {
+  body {
+    @apply bg-[--main-color] text-white;
+  }
+  header {
+    @apply flex fixed top-0 left-0 w-full items-center justify-between px-10 py-6 transition-all lg:px-10 lg:py-6;
+  }
+  body::-webkit-scrollbar {
+    display: none; /* Hide scrollbar on WebKit for browsers (e.g., Chrome, Safari) */
+  }
+}
+
+@layer components {
+  .nav-link {
+    @apply cursor-pointer font-sans text-xl text-[#F9F6EE] font-normal transition duration-300 hover:text-[#b3b3b3];
+  }
+  .bannerBtn {
+    @apply flex justify-center items-center h-11 w-32 md:h-12 md:w-36 mr-3 rounded font-bold transition-all hover:opacity-75 md:text-xl;
+  }
+  .modalButton {
+    @apply flex h-7 w-7 md:h-11 md:w-11 items-center justify-center rounded-full border-2 border-[gray] bg-[#2a2a2a]/60 transition hover:border-white hover:bg-white/10;
+  }
+}
