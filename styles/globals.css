@@ -12,7 +12,7 @@
     @apply bg-[--main-color] text-white;
   }
   header {
-    @apply flex fixed top-0 left-0 w-full items-center justify-between px-10 py-6 transition-all lg:px-10 lg:py-6;
+    @apply flex fixed top-0 left-0 w-full items-center justify-between px-10 transition-all lg:px-10;
   }
   body::-webkit-scrollbar {
     display: none; /* Hide scrollbar on WebKit for browsers (e.g., Chrome, Safari) */

@@ -46,7 +46,7 @@ const GlobalNav = () => {
       <div className="flex items-center space-x-3 md:space-x-10">
         <Link href="./">
           <img
-            src="../components/ff.png"
+            src="https://rb.gy/fbgo66"
             width={100}
             height={100}
             className="cursor-pointer object-contain"
@@ -67,7 +67,7 @@ const GlobalNav = () => {
         </ul>
       </div>
 
-      <div className="flex items-center space-x-3">
+      <div className="flex items-center space-x-3 py-9">
         <button className="inline relative right-0 top-0 mr-3 text-gray-600 focus:outline-none" onClick={toggleSearch}>
         <HiMagnifyingGlass className=" text-white h-4 w-4" />
         </button>
