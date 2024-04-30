@@ -3,6 +3,19 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 
 const GlobalNav = () => {
+  const [isExpanded, setIsExpanded] = useState(false);
+  const [searchQuery, setSearchQuery] = useState('');
+
+  const toggleSearch = () => {
+    setIsExpanded(!isExpanded);
+    setSearchQuery('');
+  };
+
+  const handleSearch = () => {
+    // Perform search action with the searchQuery
+    console.log('Search query:', searchQuery);
+  };
+  
   // a state hook to store a boolean value if the window scrolled or not
   const [scrolled, setScrolled] = useState(false);
 
@@ -25,6 +38,7 @@ const GlobalNav = () => {
     };
   }, []);
 
+  // ffor the hamburger menu, we have to create a new block/div because we want a background color on it.
   return (
     <header
       className={`${scrolled && "bg-[#101720] transition duration-400 z-50"}`}
@@ -32,7 +46,7 @@ const GlobalNav = () => {
       <div className="flex items-center space-x-3 md:space-x-10">
         <Link href="./">
           <img
-            src="https://rb.gy/ulxxee"
+            src="../components/ff.png"
             width={100}
             height={100}
             className="cursor-pointer object-contain"
@@ -49,11 +63,31 @@ const GlobalNav = () => {
           <Link href="./movies">
             <li className="nav-link">Movies</li>
           </Link>
+            <li className="nav-link">My List</li>
         </ul>
       </div>
 
       <div className="flex items-center space-x-3">
-        <HiMagnifyingGlass className="hidden h-4 w-4 sm:inline" />
+        <button className="inline relative right-0 top-0 mr-3 text-gray-600 focus:outline-none" onClick={toggleSearch}>
+        <HiMagnifyingGlass className=" text-white h-4 w-4" />
+        </button>
+        {isExpanded && (
+        <div className="flex transition-width duration-700">
+          <input
+            type="text"
+            className="border text-black border-gray-300 rounded-l-md pl-5 pr-4 outline-none focus:border-black"
+            placeholder="Search..."
+            value={searchQuery}
+            onChange={(e) => setSearchQuery(e.target.value)}
+          />
+          <button
+            className="bg-[#101720] text-white px-4 py-0.5 rounded-r-md hover:bg-gray-700"
+            onClick={handleSearch}
+          >
+            Search
+          </button>
+        </div>
+      )}
         {/** the link component to navigate between pages */}
         <Link href="./accounts">
           <img src="https://rb.gy/1izu4o" width={25} height={25} alt="" />

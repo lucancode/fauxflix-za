@@ -2,10 +2,11 @@ import { modalState, movieState } from "@/modalAtom";
 import { useRecoilState, useRecoilValue } from "recoil";
 import { Modal } from "@mui/material";
 import { IoIosClose, IoIosPause } from "react-icons/io";
-import { useEffect, useState } from "react";
+import { Suspense, useEffect, useState } from "react";
 import { Movie, Element, Genre } from "@/types";
 import ReactPlayer from "react-player";
 import { FaPlay, FaVolumeMute, FaVolumeUp } from "react-icons/fa";
+import { RiErrorWarningLine } from "react-icons/ri";
 
 const popup = () => {
   // create a state hook to set state of the modal to be open/closed.
@@ -71,18 +72,34 @@ const popup = () => {
           <IoIosClose className="h-5 w-5 md:h-9 md:w-9" onClick={handleClose} />
         </button>
         <div className="relative pt-[56.25%]">
-          <ReactPlayer
-            url={`https://www.youtube.com/watch?v=${trailerClip}`}
-            width="100%"
-            height="100%"
-            style={{ position: "absolute", top: "0", left: "0" }}
-            playing={play}
-            muted={mute}
-          />
+          {trailerClip ? (
+            <ReactPlayer
+              url={`https://www.youtube.com/watch?v=${trailerClip}`}
+              width="100%"
+              height="100%"
+              style={{ position: "absolute", top: "0", left: "0" }}
+              playing={play}
+              muted={mute}
+            />
+          ) : (
+            <div className="absolute bg-[#636363] top-0 left-0 w-full h-full flex items-center justify-center">
+              <RiErrorWarningLine className="h-28 w-28 p-3" />
+              <div className="grid place-items-center">
+                <h2 className="font-bold text-2xl">Video unavailable</h2>
+                <p className="text-white text-xl">
+                  This video is not available.
+                </p>
+              </div>
+            </div>
+          )}
           <div className="absolute bottom-6 right-4 md:bottom-10 flex items-center justify-between w-full px-10">
             <div className="absolute flex gap-2">
               <button className="modalButton" onClick={isPaused}>
-                {play ? <IoIosPause className="h-3 w-3 md:h-7 md:w-7" /> : <FaPlay className="h-3 w-3 md:h-5 md:w-5" />}{" "}
+                {play ? (
+                  <IoIosPause className="h-3 w-3 md:h-7 md:w-7" />
+                ) : (
+                  <FaPlay className="h-3 w-3 md:h-5 md:w-5" />
+                )}{" "}
                 {/** if paused is false (I set false as the initial state), then display the pause icon otherwise, display the play icon */}
               </button>
               <button className="modalButton" onClick={isMuted}>

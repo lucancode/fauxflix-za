@@ -9,6 +9,9 @@ import Head from "next/head";
 
 // Alt+Shift+F to structure your code
 export const getServerSideProps = async () => {
+    // loading screen. await for a promise and resolve after the set timeout
+    // await new Promise((resolve) => setTimeout(resolve, 2000));
+
     // write the http request in an array so we don't have multiple awaits. Meaning an http response from the api will be returned once promise is returned for all api calls.
     const [fetchActionMovies, fetchComedyMovies, fetchHorrorMovies, fetchRomanceMovies, fetchDocumentaries] = await Promise.all([
       fetch(requests.pullActionMovies).then((res) => res.json()), //the response is formatted into json structure

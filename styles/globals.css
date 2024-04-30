@@ -21,7 +21,7 @@
 
 @layer components {
   .nav-link {
-    @apply cursor-pointer font-sans text-xl text-[#F9F6EE] font-normal transition duration-300 hover:text-[#b3b3b3];
+    @apply cursor-pointer font-sans text-xl text-[#F9F6EE] font-normal transition duration-300 py-2 hover:text-[#b3b3b3];
   }
   .bannerBtn {
     @apply flex justify-center items-center h-11 w-32 md:h-12 md:w-36 mr-3 rounded font-bold transition-all hover:opacity-75 md:text-xl;
