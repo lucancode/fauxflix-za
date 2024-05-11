@@ -1,4 +1,4 @@
-const API_KEY = "2e35a53539dbf630d62b85e6989dd36f";
+const API_KEY = process.env.NEXT_PUBLIC_API_KEY;
 
 // API requests by category
 const requests = {

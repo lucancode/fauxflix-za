@@ -33,7 +33,7 @@ const GlobalNav = () => {
 
     // the return statement should run an arrow function if it is inside the effect hook.
     return () => {
-      // Cleanup function to remove event listener when component unmounts
+      // Cleanup function to remove event listener when components unmount
       window.removeEventListener("scroll", readScroll);
     };
   }, []);

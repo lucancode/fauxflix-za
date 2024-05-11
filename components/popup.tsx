@@ -14,7 +14,7 @@ const popup = () => {
   // function to close modal when close button is click. the setter function is false when close button clicked
   const handleClose = () => setOpen(false);
   const [movies, setMovies] = useRecoilState<Movie | null>(movieState); //on typescript, we have to define the data type (Movie is a custom data type) to pass info from the fetchUpcoming
-  const API_KEY = "2e35a53539dbf630d62b85e6989dd36f";
+  const API_KEY = process.env.NEXT_PUBLIC_API_KEY;
   const [trailerClip, setTrailerClip] = useState(""); // set a state for trailers as a string input. Not an array this time.
   const [genre, setGenre] = useState<Genre[]>(); // genre type is set as an array because one movie/show can be classified under multiple genre
   const [mute, setMute] = useState(false); // default state is sound on, thus mute is false
@@ -66,7 +66,7 @@ const popup = () => {
       onClose={handleClose}
       className="fixed !top-7 md:w-auto left-0 right-0 z-50 mx-auto w-full max-w-4xl overflow-hidden scrollbar-none overflow-y-scroll rounded-md scrollbar-hide"
     >
-      {/** the modal component does not work without the children. In this case, we used fragments to sorta ignore this required */}
+      {/** the modal component does not work without the children. In this case, we used fragments to sorta ignore this requirement */}
       <>
         <button className="absolute right-5 top-5 z-40 h-5 w-5 md:h-9 md:w-9 border-none bg-[#181818] rounded-full">
           <IoIosClose className="h-5 w-5 md:h-9 md:w-9" onClick={handleClose} />
